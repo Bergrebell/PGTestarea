@@ -49,6 +49,8 @@ var app = {
 };
 
 
+
+// Enable AJAX
 $( document ).ready(function() {
     // Variable to hold request
     var request;
