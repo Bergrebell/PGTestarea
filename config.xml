@@ -41,6 +41,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <plugin name="Accelerometer" value="CDVAccelerometer" />
     <!-- Plugin to access Acceleromoter 
     <plugin name="Accelerometer" value="CDVAccelerometer" /> -->
     <feature name="Accelerometer">
