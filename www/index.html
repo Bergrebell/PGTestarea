@@ -9,18 +9,33 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <title>Hello World</title>
+        <title>PGTestarea</title>
     </head>
     <body>
 
-        <div class="app">
-            <h1>Ajax Testarea</h1>
-                <form id="foo">
-                    <label for="bar">A bar</label>
-                    <input id="bar" name="bar" type="text" value="" />
-                    <input type="submit" value="Send" />
-                </form>
+        <div>
+          <form name="ajaxformname" id="ajaxform" action="http:localhost:3000/request" method="POST">
+            AJAX:
+            <input id="btn1" name="feeling" type="submit" value="Fine">
+            <input id="btn2" name="feeling" type="submit" value="Neutral">
+            <input id="btn3" name="feeling" type="submit" value="Bad">
+          </form>
         </div>
+
+
+    <!-- 
+        <div>
+            <form>
+              <label for="userid">User ID :</label>
+              <input type="text" name ="userid" id="userid" />
+              <div id="div1"></div>
+              <input type="button" value ="Check" onclick="PostData()" />
+            </form>
+        </div>
+    -->
+
+
+
 
         <div id="accelerometer">Waiting for accelerometer...</div>
 
