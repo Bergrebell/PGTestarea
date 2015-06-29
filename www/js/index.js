@@ -1,7 +1,5 @@
 console.log("ajax2.js loaded");
 
-
-
 // *** Start AJAX ***
 $(document).ready(function() {
 
@@ -24,7 +22,6 @@ $(document).ready(function() {
             url: form.attr('action'),
             type: form.attr("method"),
             data: { clickedButton : form.data('clicked') }
-            alert("Ajax sent")
         });
     });
 
