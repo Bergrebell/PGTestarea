@@ -13,6 +13,7 @@ $(document).ready(function() {
     $('#ajaxform').submit(function (event) {
 
         event.preventDefault();
+        console.log("preventDefault")
 
         var form = $(this);
 
@@ -22,9 +23,8 @@ $(document).ready(function() {
         $.ajax({
             url: form.attr('action'),
             type: form.attr("method"),
-            datatype: 'jsonp',
             data: { clickedButton : form.data('clicked') }
-            console.log("ajax sent")
+            alert("Ajax sent")
         });
     });
 
