@@ -7,58 +7,52 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css"></script>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <title>Hello World</title>
+        <!-- Javascript, Jquery & Jquery mobile directories in the head bc otherwise short flash without jqm css-->
+
+
+        <title>PGTestarea</title>
     </head>
+
+
+
+
     <body>
 
-        <div class="app">
-            <h1>How are you?</h1>
-                <form id="foo">
-                    <label for="bar">Via Text</label>
-                    <input id="bar" name="feeling" type="text" value="" />
-                    <input type="submit" value="Send" />
-                </form>
+    <div data-role="page">
+
+    <div data-role="header">
+    <h1>Temperature</h1>
+    </div>
+
+        <div id="ajax">
+          <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
+            <input id="btn1" name="feeling" type="submit" value="Fine">
+            <input id="btn2" name="feeling" type="submit" value="Neutral">
+            <input id="btn3" name="feeling" type="submit" value="Bad">
+          </form>
         </div>
-
-        <div>
-
-            <form id="foo2">
-                Howdy:
-                <button name="subject" type="submit" value="Fine">Fine</button>
-                <button name="subject" type="submit" value="Neutral">Neutral</button>
-                <button name="subject" type="submit" value="Bad">Bad</button>
-            </form>
-
-        </div>
-
-
-    <!-- 
-        <div>
-            <form>
-              <label for="userid">User ID :</label>
-              <input type="text" name ="userid" id="userid" />
-              <div id="div1"></div>
-              <input type="button" value ="Check" onclick="PostData()" />
-            </form>
-        </div>
-    -->
-
-
 
 
         <div id="accelerometer">Waiting for accelerometer...</div>
 
+    </div>
 
 
 
 
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+
+
+<!--
         <script type="text/javascript">
             app.initialize();
-        </script>
+        </script> -->
     </body>
 </html>

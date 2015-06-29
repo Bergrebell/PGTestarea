@@ -81,6 +81,12 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <!-- Start localhost whitelisting -->
+    <access origin="*localhost.*" />
+    <access origin="*.localhost.*" />
+    <!-- End localhost whitelisting -->
+
+
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
