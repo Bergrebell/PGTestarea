@@ -20,39 +20,55 @@
         <title>PGTestarea</title>
     </head>
 
-
-
-
     <body>
 
+    <!-- Start Startpage aka Temperature -->
     <div data-role="page">
-
-    <div data-role="header">
-    <h1>Temperature</h1>
-    </div>
-
-        <div id="ajax">
-          <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
-            <input id="btn1" name="feeling" type="submit" value="Fine">
-            <input id="btn2" name="feeling" type="submit" value="Neutral">
-            <input id="btn3" name="feeling" type="submit" value="Bad">
-          </form>
+        <div data-role="header">
+        <h1>Temperature</h1>
         </div>
 
-
-        <div id="accelerometer">Waiting for accelerometer...</div>
-
+        <div data-role="main" id="page1">
+            <div id="ajax">
+              <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
+                <input id="btn1" name="feeling" type="submit" value="Cold">
+                <input id="btn2" name="feeling" type="submit" value="Cool">
+                <input id="btn3" name="feeling" type="submit" value="Slightly cool">
+                <input id="btn1" name="feeling" type="submit" value="Neutral">
+                <input id="btn1" name="feeling" type="submit" value="Slightly warm">
+                <input id="btn1" name="feeling" type="submit" value="Warm">
+                <input id="btn1" name="feeling" type="submit" value="Hot">
+              </form>
+            <a href="#page2" data-ajax="false">Page2</a>
+            </div>
     </div>
+    <!-- End Startpage aka Temperature -->
+
+    <!-- Start Second page aka illumination -->
+    <div data-role="page" id="page2">
+        <div data-role="header">
+        <h1>Illumination</h1>
+        </div>
+
+        <div data-role="main">
+            <div id="ajax">
+              <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
+                <input id="btn1" name="feeling" type="submit" value="Cold">
+   
+              </form>
+            </div>
+    </div>
+    <!-- End Second page aka illumination -->
 
 
 
 
 
 
-
-
+        <!-- Start init - Even if the console says different - needed to initialize the js! Otherwise form gets sent via html instead of ajax! -->
         <script type="text/javascript">
             app.initialize();
         </script>
+        <!-- End init -->
     </body>
 </html>

@@ -20,29 +20,41 @@
         <title>PGTestarea</title>
     </head>
 
-
-
-
     <body>
 
-    <div data-role="page">
-
-    <div data-role="header">
-    <h1>Temperature</h1>
-    </div>
-
-        <div id="ajax">
-          <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
-            <input id="btn1" name="feeling" type="submit" value="Fine">
-            <input id="btn2" name="feeling" type="submit" value="Neutral">
-            <input id="btn3" name="feeling" type="submit" value="Bad">
-          </form>
+    <!-- Start Startpage aka Temperature -->
+    <div data-role="page" id="page1">
+        <div data-role="header">
+            <h1>Temperature</h1>
         </div>
-
-
-        <div id="accelerometer">Waiting for accelerometer...</div>
-
+        <div data-role="main" class="ui-content">
+            <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
+                <input id="btn1" name="feeling" type="submit" value="Cold">
+                <input id="btn2" name="feeling" type="submit" value="Cool">
+                <input id="btn3" name="feeling" type="submit" value="Slightly cool">
+                <input id="btn1" name="feeling" type="submit" value="Neutral">
+                <input id="btn1" name="feeling" type="submit" value="Slightly warm">
+                <input id="btn1" name="feeling" type="submit" value="Warm">
+                <input id="btn1" name="feeling" type="submit" value="Hot">
+              </form>
+            <a href="#page2">Skip</a>
+        </div>
+        
+    
     </div>
+    
+    <div data-role="page" id="page2">
+        <div data-role="header">
+            <h1>Illumination</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <p>Welcome to the illumination page</p>
+            <a href="#page1">Back</a>
+        </div>
+    </div>
+    <!-- End Second page aka illumination -->
+
+
 
 
 

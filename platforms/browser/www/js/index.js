@@ -1,6 +1,5 @@
-console.log("ajax2.js loaded");
 
-
+console.log("index.js loaded");
 
 // *** Start AJAX ***
 $(document).ready(function() {
@@ -23,11 +22,14 @@ $(document).ready(function() {
         $.ajax({
             url: form.attr('action'),
             type: form.attr("method"),
-            data: { clickedButton : form.data('clicked') }
-            alert("Ajax sent")
+            data: { Temperature : form.data('clicked') },
+            //Callback function - success if ajax call worked!
+            /*success: function() {
+                console.log("success")
+                window.location.href = "#page2";
+            }*/
         });
     });
-
 });
 // *** End AJAX ***
 
@@ -37,7 +39,7 @@ $(document).ready(function() {
 
 // Start Accelerometer
 // The watch id references the current `watchAcceleration`
-    var watchID = null;
+/*    var watchID = null;
     // Wait for Cordova to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -78,5 +80,5 @@ $(document).ready(function() {
     function onError() {
         alert('onError!');
     }
-
+*/ 
 // *** End API***

@@ -1,6 +1,37 @@
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};
+
+
 console.log("ajax2.js loaded");
-
-
 
 // *** Start AJAX ***
 $(document).ready(function() {
@@ -23,8 +54,7 @@ $(document).ready(function() {
         $.ajax({
             url: form.attr('action'),
             type: form.attr("method"),
-            data: { clickedButton : form.data('clicked') }
-            alert("Ajax sent")
+            data: { Temperature : form.data('clicked') }
         });
     });
 
@@ -37,7 +67,7 @@ $(document).ready(function() {
 
 // Start Accelerometer
 // The watch id references the current `watchAcceleration`
-    var watchID = null;
+/*    var watchID = null;
     // Wait for Cordova to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -78,5 +108,5 @@ $(document).ready(function() {
     function onError() {
         alert('onError!');
     }
-
+*/ 
 // *** End API***
