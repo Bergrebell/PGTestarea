@@ -28,7 +28,7 @@
             <h1>Temperature</h1>
         </div>
         <div data-role="main" class="ui-content">
-            <form name="ajaxformname" id="ajaxform" action="http://localhost:3000/request" method="POST">
+            <form name="tempform" id="tempform" action="http://localhost:3000/request" method="POST">
                 <input id="btn1" name="feeling" type="submit" value="Cold">
                 <input id="btn2" name="feeling" type="submit" value="Cool">
                 <input id="btn3" name="feeling" type="submit" value="Slightly cool">
@@ -37,20 +37,30 @@
                 <input id="btn1" name="feeling" type="submit" value="Warm">
                 <input id="btn1" name="feeling" type="submit" value="Hot">
               </form>
-            <a href="#page2">Skip</a>
+            <div class="navigation">
+                <a href="#page2" class="skipbtn">Skip</a>
+            </div>        
         </div>
-        
-    
     </div>
+    <!-- Start Startpage aka Temperature -->
     
+    
+    <!-- Start Second page aka illumination -->
     <div data-role="page" id="page2">
         <div data-role="header">
-            <h1>Illumination</h1>
+            <h1>Lighting</h1>
         </div>
         <div data-role="main" class="ui-content">
-            <p>Welcome to the illumination page</p>
-            <a href="#page1">Back</a>
-        </div>
+            <form name="lightform" id="lightform" action="http://localhost:3000/request" method="POST">
+                <label for="lighting">From dark to bright (1 is the darkest)</label>
+                <input type="range" name="rate" id="rate" min="1" max="7" />
+                <input type="submit" name="go" id="go" value="Submit"/>
+            </form>
+            <div class="navigation">
+                <a href="#page1">Back</a>
+                <a href="#page3" class="skipbtn">Skip</a>
+            </div>
+        </div> 
     </div>
     <!-- End Second page aka illumination -->
 

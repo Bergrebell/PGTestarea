@@ -1,22 +1,21 @@
 
 console.log("index.js loaded");
 
-// *** Start AJAX ***
 $(document).ready(function() {
 
     $( document ).bind( "mobileinit", function() {
-    // Make your jQuery Mobile framework configuration changes here!
+    // Make jQuery Mobile framework configuration changes here
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
     });
 
-
-    $('#ajaxform').on('click', 'input[type=submit][name=feeling]', function(e) {
+// *** Start AJAX Temp ***
+    $('#tempform').on('click', 'input[type=submit][name=feeling]', function(e) {
 
         $(this.form).data('clicked', this.value);
     });
 
-    $('#ajaxform').submit(function (event) {
+    $('#tempform').submit(function (event) {
 
         event.preventDefault();
         console.log("preventDefault")
@@ -37,8 +36,51 @@ $(document).ready(function() {
             }
         });
     });
+// *** End AJAX Temp ***
+
+// *** Start AJAX Light ***
+    $('#lightform').submit(function ( event ) {
+    event.preventDefault();
+    console.log("preventDefault fired")
+
+    var formvalue = $('#rate').val();
+    console.log(formvalue);
+
+    var form = $(this);
+
+    $.ajax({
+            url: form.attr('action'),
+            type: form.attr("method"),
+            data: { Lighting : formvalue },
+            //Callback function - success if ajax call worked!
+            success: function() {
+                console.log("success")
+                //window.location.href = "#page2";
+            }
+        });
+// *** End AJAX Light ***
+
 });
-// *** End AJAX ***
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
