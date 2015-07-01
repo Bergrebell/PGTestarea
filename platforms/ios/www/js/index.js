@@ -1,47 +1,21 @@
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+console.log("index.js loaded");
 
-        console.log('Received Event: ' + id);
-    }
-};
-
-
-console.log("ajax2.js loaded");
-
-// *** Start AJAX ***
 $(document).ready(function() {
 
-    $('#ajaxform').on('click', 'input[type=submit][name=feeling]', function(e) {
+    $( document ).bind( "mobileinit", function() {
+    // Make jQuery Mobile framework configuration changes here
+    $.support.cors = true;
+    $.mobile.allowCrossDomainPages = true;
+    });
+
+// *** Start AJAX Temp ***
+    $('#tempform').on('click', 'input[type=submit][name=feeling]', function(e) {
 
         $(this.form).data('clicked', this.value);
     });
 
-    $('#ajaxform').submit(function (event) {
+    $('#tempform').submit(function (event) {
 
         event.preventDefault();
         console.log("preventDefault")
@@ -54,12 +28,59 @@ $(document).ready(function() {
         $.ajax({
             url: form.attr('action'),
             type: form.attr("method"),
-            data: { Temperature : form.data('clicked') }
+            data: { Temperature : form.data('clicked') },
+            //Callback function - success if ajax call worked!
+            success: function() {
+                console.log("success")
+                window.location.href = "#page2";
+            }
         });
     });
+// *** End AJAX Temp ***
+
+// *** Start AJAX Light ***
+    $('#lightform').submit(function ( event ) {
+    event.preventDefault();
+    console.log("preventDefault fired")
+
+    var formvalue = $('#rate').val();
+    console.log(formvalue);
+
+    var form = $(this);
+
+    $.ajax({
+            url: form.attr('action'),
+            type: form.attr("method"),
+            data: { Lighting : formvalue },
+            //Callback function - success if ajax call worked!
+            success: function() {
+                console.log("success")
+                //window.location.href = "#page2";
+            }
+        });
+// *** End AJAX Light ***
 
 });
-// *** End AJAX ***
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

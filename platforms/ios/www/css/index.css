@@ -8,3 +8,15 @@
 	position: relative;
 	top: 30px;
 }
+
+.skipbtn {
+	float: right;
+	padding-right: 30px;
+}
+
+.navigation {
+	position: absolute;
+	padding-bottom: 10px;
+	width: 100%;
+	bottom: 0;
+}

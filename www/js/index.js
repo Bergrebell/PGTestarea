@@ -55,7 +55,7 @@ $(document).ready(function() {
             //Callback function - success if ajax call worked!
             success: function() {
                 console.log("success")
-                //window.location.href = "#page2";
+                window.location.href = "#page3";
             }
         });
 // *** End AJAX Light ***
