@@ -58,9 +58,29 @@ $(document).ready(function() {
                 window.location.href = "#page3";
             }
         });
+    });
 // *** End AJAX Light ***
 
+// *** Start Scale enhancement ***
+
+$(document).on("pagecreate", "#page2", function () {
+
+    var ticks = '<div class="sliderTickmarks "><span>1</span></div>';
+    ticks += '<div class="sliderTickmarks "><span>2</span></div>';
+    ticks += '<div class="sliderTickmarks "><span>3</span></div>';
+    ticks += '<div class="sliderTickmarks "><span>4</span></div>';
+    ticks += '<div class="sliderTickmarks "><span>5</span></div>';
+    ticks += '<div class="sliderTickmarks "><span>6</span></div>';
+    ticks += '<div class="sliderTickmarks "><span>7</span></div>';
+    $("#rate ").closest(".ui-slider").find(".ui-slider-track").prepend(ticks);
+
 });
+
+
+// *** End Scale enhancement ***
+
+
+
 });
 
 

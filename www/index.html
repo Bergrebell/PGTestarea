@@ -32,10 +32,10 @@
                 <input id="btn1" name="feeling" type="submit" value="Cold">
                 <input id="btn2" name="feeling" type="submit" value="Cool">
                 <input id="btn3" name="feeling" type="submit" value="Slightly cool">
-                <input id="btn1" name="feeling" type="submit" value="Neutral">
-                <input id="btn1" name="feeling" type="submit" value="Slightly warm">
-                <input id="btn1" name="feeling" type="submit" value="Warm">
-                <input id="btn1" name="feeling" type="submit" value="Hot">
+                <input id="btn4" name="feeling" type="submit" value="Neutral">
+                <input id="btn5" name="feeling" type="submit" value="Slightly warm">
+                <input id="btn6" name="feeling" type="submit" value="Warm">
+                <input id="btn7" name="feeling" type="submit" value="Hot">
               </form>
             <div class="navigation">
                 <a href="#page2" data-transition="slideup" class="skipbtn">Skip</a>
@@ -72,7 +72,7 @@
         </div>
         <div data-role="main" class="ui-content">
             <form name="noiseform" id="noiseform" action="http://localhost:3000/request" method="POST">
-                <label for="lighting">From silent to noisy (1 is silent)</label>
+                <label for="noise">From silent to noisy (1 is silent)</label>
                 <input type="range" name="rate" id="rate" min="1" max="7" />
                 <input type="submit" name="go" id="go" value="Submit"/>
             </form>
