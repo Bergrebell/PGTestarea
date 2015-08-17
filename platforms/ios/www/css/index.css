@@ -9,6 +9,12 @@
 	top: 30px;
 }
 
+#go2{
+    position:absolute;
+    bottom:15px;
+    width:94%;
+}
+
 .skipbtn {
 	float: right;
 	padding-right: 30px;
