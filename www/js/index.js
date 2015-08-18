@@ -8,6 +8,22 @@ $(document).ready(function() {
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
     });
+                  
+                  
+// *** Start Sensor Javascript ***
+    function onSuccess(result) {
+        var resStr = "Result: " + result;
+        console.log(resStr);
+        //alert(resStr);
+        return result;
+    }
+
+
+    function onFailure(err) {
+        console.log("onFailure: " + JSON.stringify(err));
+        alert("Failure: " + err);
+    }
+// *** End Sensor Javascript
 
 // *** Start AJAX Temp ***
     $('#tempform').on('click', 'input[type=submit][name=feeling]', function(e) {
@@ -18,7 +34,16 @@ $(document).ready(function() {
     $('#tempform').submit(function (event) {
 
         event.preventDefault();
-        console.log("preventDefault")
+        console.log("preventDefault Temp")
+                          
+        function test(result) {
+            console.log("testvalue noiseeee" + result);
+
+        };
+                          
+                          
+        var test = carrier.getAverageNoise(test, onFailure);
+                          
 
         var form = $(this);
 
@@ -40,26 +65,55 @@ $(document).ready(function() {
 
 // *** Start AJAX Light ***
     $('#lightform').submit(function ( event ) {
-    event.preventDefault();
-    console.log("preventDefault fired")
+                           
+        event.preventDefault();
+        console.log("preventDefault Light")
 
-    var formvalue = $('#rate').val();
-    console.log(formvalue);
+        var formvalue = $('#rate').val();
+        console.log(formvalue);
+        carrier.getLuminosity(onSuccess, onFailure);
 
-    var form = $(this);
+        var form = $(this);
 
-    $.ajax({
-            url: form.attr('action'),
-            type: form.attr("method"),
-            data: { Lighting : formvalue },
-            //Callback function - success if ajax call worked!
-            success: function() {
-                console.log("success")
-                window.location.href = "#page3";
-            }
-        });
+        $.ajax({
+                url: form.attr('action'),
+                type: form.attr("method"),
+                data: { Lighting : formvalue },
+                //Callback function - success if ajax call worked!
+                success: function() {
+                    console.log("success")
+                    window.location.href = "#page3";
+                }
+            });
     });
 // *** End AJAX Light ***
+                  
+                  
+// *** Start AJAX Noise ***
+    $('#noiseform').submit(function ( event ) {
+                           
+         event.preventDefault();
+         console.log("preventDefault Noise")
+         
+         var formvalue = $('#rate').val();
+         console.log(formvalue);
+         carrier.getAverageNoise(onSuccess, onFailure);
+
+         
+         var form = $(this);
+         
+         $.ajax({
+                url: form.attr('action'),
+                type: form.attr("method"),
+                data: { Noise : formvalue },
+                //Callback function - success if ajax call worked!
+                success: function() {
+                console.log("success")
+                window.location.href = "#page3";
+                }
+        });
+    });
+// *** End AJAX Noise ***
 
 // *** Start Scale enhancement ***
 
@@ -78,6 +132,9 @@ $(document).on("pagecreate", "#page2", function () {
 
 
 // *** End Scale enhancement ***
+                  
+                  
+
 
 
 

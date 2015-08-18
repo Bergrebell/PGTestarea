@@ -15,6 +15,46 @@
         <script type="text/javascript" src="js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <!-- Javascript, Jquery & Jquery mobile directories in the head bc otherwise short flash without jqm css-->
+        <script type="text/javascript" charset="utf-8">
+            
+            function onBodyLoad() {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            };
+        
+        function onDeviceReady() {
+            //Nothing to do here really
+            //but I always include this just in case
+            carrier.getAverageNoise(onSuccess, onFailure);
+        };
+        
+        function doSomething1() {
+            carrier.getAverageNoise(onSuccess2, onFailure);
+        }
+        
+        function doSomething2() {
+            carrier.getLuminosity(onSuccess2, onFailure);
+        }
+        
+        
+        function onSuccess(result) {
+            var resStr = "Result: " + result;
+            console.log(resStr);
+            //alert(resStr);
+        }
+        
+        function onSuccess2(result) {
+            var resStr = "Result: " + result;
+            console.log(resStr);
+            alert(resStr);
+        }
+        
+        function onFailure(err) {
+            console.log("onFailure: " + JSON.stringify(err));
+            alert("Failure: " + err);
+        }
+        
+            </script>
+
 
 
         <title>PGTestarea</title>
@@ -54,7 +94,7 @@
             <form name="lightform" id="lightform" action="http://localhost:3000/request" method="POST">
                 <label for="lighting">From dark to bright (1 is the darkest)</label>
                 <input type="range" name="rate" id="rate" min="1" max="7" />
-                <input type="submit" name="go" id="go2" value="Submit"/>
+                <input type="submit" name="go" id="go" value="Submit"/>
             </form>
             <div class="navigation">
                 <a href="#page1" data-transition="slidedown">Back</a>
@@ -78,11 +118,29 @@
             </form>
             <div class="navigation">
                 <a href="#page2" data-transition="slidedown">Back</a>
-                <a href="#page3" data-transition="slideup" class="skipbtn">Skip</a>
+                <a href="#page4" data-transition="slideup" class="skipbtn">Skip</a>
             </div>
         </div> 
     </div>
     <!-- End Third page aka Noise level -->
+    
+    
+    <!-- Start Third page aka Test level -->
+    <div data-role="page" id="page4">
+        <div data-role="header">
+            <h1>SensorTest</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            
+            <button onclick="doSomething1();"> Get Average Noise </button>
+            <button onclick="doSomething2();"> Get Luminosity </button>
+
+            <div class="navigation">
+                <a href="#page3" data-transition="slidedown">Back</a>
+            </div>
+        </div>
+    </div>
+    <!-- End Third page aka Test level -->
 
 
 

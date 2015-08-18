@@ -4,15 +4,19 @@
 
 }
 
+#go {
+        position:absolute;
+        bottom:15px;
+}
+
+
 #ajax {
 	position: relative;
 	top: 30px;
 }
 
-#go2{
-    position:absolute;
-    bottom:15px;
-    width:94%;
+div.ui-content {
+    height: 150px;
 }
 
 .skipbtn {
