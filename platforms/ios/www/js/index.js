@@ -8,6 +8,16 @@ $(document).ready(function() {
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
     });
+    
+                  
+// *** start setup for ajax data sending ***
+    var globalData = {};
+                  
+    function addToGlobal(name, value) {
+                  globalData[name] = value;
+    };
+// *** end setup for ajax data sending ***
+      
                   
                   
 // *** Start Sensor Javascript ***
@@ -25,6 +35,7 @@ $(document).ready(function() {
     }
 // *** End Sensor Javascript
 
+                  
 // *** Start AJAX Temp ***
     $('#tempform').on('click', 'input[type=submit][name=feeling]', function(e) {
 
@@ -36,19 +47,22 @@ $(document).ready(function() {
         event.preventDefault();
         console.log("preventDefault Temp")
                           
-        function test(result) {
-            console.log("testvalue noiseeee" + result);
+        function initNoiseSensor(result) {
+            console.log("initNoiseSensor" + result);
 
         };
                           
-                          
-        var test = carrier.getAverageNoise(test, onFailure);
+        //first value of Noisesensor is always -120.0000 and therby unusable!
+        carrier.getAverageNoise(initNoiseSensor, onFailure);
                           
 
         var form = $(this);
 
         //Alert for debug
         //alert(form.data('clicked'));
+                          
+        // add to globalData
+        addToGlobal("TemperatureU", form.data('clicked'));
 
         $.ajax({
             url: form.attr('action'),
@@ -63,6 +77,8 @@ $(document).ready(function() {
     });
 // *** End AJAX Temp ***
 
+                  
+                  
 // *** Start AJAX Light ***
     $('#lightform').submit(function ( event ) {
                            
@@ -71,9 +87,19 @@ $(document).ready(function() {
 
         var formvalue = $('#rate').val();
         console.log(formvalue);
-        carrier.getLuminosity(onSuccess, onFailure);
+                           
+       function onSuccessLight(result) {
+           addToGlobal("LightS", result);
+           console.log("LightS" + result);
+       
+       };
+                           
+        carrier.getLuminosity(onSuccessLight, onFailure);
 
         var form = $(this);
+                           
+       // add to globalData
+       addToGlobal("LightU", formvalue);
 
         $.ajax({
                 url: form.attr('action'),
@@ -87,6 +113,7 @@ $(document).ready(function() {
             });
     });
 // *** End AJAX Light ***
+           
                   
                   
 // *** Start AJAX Noise ***
@@ -97,10 +124,21 @@ $(document).ready(function() {
          
          var formvalue = $('#rate').val();
          console.log(formvalue);
-         carrier.getAverageNoise(onSuccess, onFailure);
+                           
+           function onSuccessNoise(result) {
+               addToGlobal("NoiseS", result);
+               console.log("NoiseS" + result);
+               console.log(globalData);
+           
+           };
+                           
+         carrier.getAverageNoise(onSuccessNoise, onFailure);
 
          
          var form = $(this);
+        
+         // add to globalData
+         addToGlobal("NoiseU", formvalue);
          
          $.ajax({
                 url: form.attr('action'),
@@ -112,11 +150,15 @@ $(document).ready(function() {
                 window.location.href = "#page3";
                 }
         });
+                           
+        console.log(globalData);
+
     });
 // *** End AJAX Noise ***
 
+          
+                  
 // *** Start Scale enhancement ***
-
 $(document).on("pagecreate", "#page2", function () {
 
     var ticks = '<div class="sliderTickmarks "><span>1</span></div>';
@@ -129,8 +171,6 @@ $(document).on("pagecreate", "#page2", function () {
     $("#rate ").closest(".ui-slider").find(".ui-slider-track").prepend(ticks);
 
 });
-
-
 // *** End Scale enhancement ***
                   
                   
